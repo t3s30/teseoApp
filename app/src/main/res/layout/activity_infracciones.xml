@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="app.simov.teseo.Infracciones">
+<!--Empieza cabecera y titulo-->
+    <ImageView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginBottom="40dp"
+        android:alpha=".20"
+        app:srcCompat="@drawable/imos"/>
+
+    <TextView
+        android:id="@+id/tvTituloPrincipal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/INFRACIONES_THOR"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+
+    <!--Termina cabecera y título-->
+
+    <!--Comienza tabla y contenido de placas y licencia-->
+
+    <TableLayout
+        android:id="@+id/tblContenedorInfraccion"
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloPrincipal"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/white">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Licencia(Vigencia)"
+                android:textColor="#8BC34A"
+                android:textStyle="bold" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvLicenciaInfraccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="12dp"
+                    android:text="LICENCIA"
+                    android:textColor="#FFFFFF" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tvfec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:text="Fecha Venc"
+                        android:textColor="#8BC34A"
+                        android:textStyle="bold" />
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tvFechaVencimientoInfraccion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:text="SIN FECHA"
+                            android:textColor="#FFFFFF" />
+                    </TableRow>
+                </TableRow>
+            </TableRow>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Placa"
+                android:textColor="#8BC34A"
+                android:textStyle="bold" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvPlacaInfraccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="12dp"
+                    android:text="PLACA"
+                    android:textColor="#FFFFFF" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tvEs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Estatus"
+                            android:textColor="#8BC34A"
+                            android:textStyle="bold" />
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/tvEstatusInfracciones"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="SIN-PLACA"
+                                android:textColor="#FFFFFF" />
+                        </TableRow>
+                    </TableRow>
+                </TableRow>
+            </TableRow>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vigencia TC"
+                android:textColor="#8BC34A"
+                android:textStyle="bold" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvVigenciaTcInfraccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="12dp"
+                    android:text="VIGENCIA"
+                    android:textColor="#FFFFFF" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </TableRow>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VIM"
+                android:textColor="#8BC34A"
+                android:textStyle="bold" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvVimInfraccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="12dp"
+                    android:text="VIM"
+                    android:textColor="#FFFFFF" />
+            </TableRow>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Modalidad"
+                android:textColor="#8BC34A"
+                android:textStyle="bold" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvModalidadInfraccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="12dp"
+                    android:text="Modalidad"
+                    android:textColor="#FFFFFF" />
+            </TableRow>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvsec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sector"
+                android:textColor="#8BC34A"
+                android:textStyle="bold" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvSector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:text="Sector"
+                    android:textColor="#FFFFFF" />
+            </TableRow>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="115dp"
+                android:layout_height="match_parent"
+                android:text="Infraccion"
+                android:textColor="#8BC34A"
+                android:textStyle="bold" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvInfra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:text="Infraccion"
+                    android:textColor="#FFFFFF" />
+            </TableRow>
+        </TableRow>
+    </TableLayout>
+
+    <!--Termina tabla y contenido de placas y licencia-->
+
+    <!--Zona input comentarios-->
+
+    <!--<TextView
+        android:id="@+id/comentarioLabel"
+        app:layout_constraintTop_toBottomOf="@id/tblContenedorInfraccion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/edtComentarios"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/COMENTARIOS"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>-->
+
+    <EditText
+        android:id="@+id/edtComentarios"
+        app:layout_constraintTop_toBottomOf="@id/tblContenedorInfraccion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/botonLogin"
+        android:textColorHint="@color/white"
+        android:hint="Comentarios"
+        android:inputType="text"
+        android:textColor="@color/white"/>
+
+    <EditText
+        android:id="@+id/edtFolio"
+        app:layout_constraintTop_toBottomOf="@id/edtComentarios"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/botonLogin"
+        android:textColorHint="@color/white"
+        android:hint="Folio"
+        android:inputType="text"
+        android:textColor="@color/white"/>
+
+
+    <!--Termina zona de comentarios-->
+
+    <!--Empieza zona de imágenes-->
+    <ImageView
+        android:id="@+id/imagemId"
+        app:layout_constraintTop_toBottomOf="@id/edtFolio"
+        app:layout_constraintStart_toStartOf="@+id/edtComentarios"
+        app:layout_constraintEnd_toStartOf="@id/imagemId2"
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/img_base"/>
+
+    <ImageView
+        android:id="@+id/imagemId2"
+        app:layout_constraintTop_toBottomOf="@id/edtFolio"
+        app:layout_constraintStart_toEndOf="@+id/imagemId"
+        app:layout_constraintEnd_toEndOf="@id/edtComentarios"
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/img_base" />
+
+    <ImageView
+        android:id="@+id/imagemId3"
+        app:layout_constraintTop_toBottomOf="@id/imagemId2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/img_base"/>
+
+
+
+
+
+
+    <Button
+        android:id="@+id/btnCargarImg"
+        app:layout_constraintBottom_toTopOf="@id/btnCargarImg2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/botonLogin"
+        android:onClick="onclick"
+        android:text="@string/TOMAR_FOTO"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/btnCargarImg2"
+        app:layout_constraintBottom_toTopOf="@+id/tvVersion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/botonLogin"
+        android:onClick="onclick"
+        android:text="@string/ENVIA_INFRACCION"
+        android:textColor="@color/white"/>
+    <TextView
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/version"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/titulosVerdes"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
