@@ -40,6 +40,7 @@ public class WsgobConsulta extends AppCompatActivity {
     String vigencia;
     String vim;
     String marca;
+    String economico;
     String infracciones;
     String licencia;
     String LICENCIA;
@@ -79,6 +80,7 @@ public class WsgobConsulta extends AppCompatActivity {
 
     TextView tvplacaQR;
     TextView tvserialQR;
+    TextView tvdelegacionIdQR;
     TextView tveconomicoQR;
     TextView tvserieQR;
     TextView tvmarcaQR;
@@ -165,6 +167,19 @@ public class WsgobConsulta extends AppCompatActivity {
    TextView tituloPlacasFolio;
    TextView tituloTarjetonFolio;
 
+
+    TextView tvfolioGafeteQR;
+    TextView tvdelegacionGafeteQR;
+    TextView tvmodalidadGafeteQR;
+    TextView tvserieRegistroGafeteQR;
+    TextView tvvigenciaGafeteQR;
+
+    TextView tvEconomicos;
+
+    TableLayout tblIfracciones;
+    TableLayout tblLicencia;
+    TextView tvTituloInfracciones;
+    TextView tvTituloLicencia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,6 +193,27 @@ public class WsgobConsulta extends AppCompatActivity {
         String URLINFRACCION = getResources().getString(R.string.URL_INFRACCION);
         enviarWSConsultaLicencia(URLICENCIA);
         enviarWSConsultaInfraccion(URLINFRACCION);
+
+        tvTituloLicencia = findViewById(R.id.tvTituloLicencia);
+
+        //Tablas
+        tblIfracciones = findViewById(R.id.tblIfracciones);
+        tblLicencia = findViewById(R.id.tblLicencia);
+        tblIfracciones.setVisibility(View.GONE);
+        tvTituloInfracciones = findViewById(R.id.tvTituloInfracciones);
+        tvTituloInfracciones.setVisibility(View.GONE);
+
+        //Gafete
+        tvfolioGafeteQR =  findViewById(R.id.tvGafeteFolioQR2);
+        tvdelegacionGafeteQR = findViewById(R.id.tvGafeteMunicipioQR) ;
+        tvmodalidadGafeteQR = findViewById(R.id.tvGafeteModalidadQR) ;
+        tvserieRegistroGafeteQR = findViewById(R.id.tvGafeteRegistroQR);
+        tvvigenciaGafeteQR =  findViewById(R.id.tvGafeteVigenciaQR);
+
+        tvEconomicos =  findViewById(R.id.tvEconomicos);
+
+
+
 
         //TaBLAS
 
@@ -213,8 +249,10 @@ public class WsgobConsulta extends AppCompatActivity {
 
 
         tvplacaQR = findViewById(R.id.placasQR);
-        tvserialQR = findViewById(R.id.serieQR);
+        tvserialQR = findViewById(R.id.QRQR);
+        tvdelegacionIdQR = findViewById(R.id.delegacionIdQR);
         tveconomicoQR = findViewById(R.id.economicoQR);
+        tvserieQR = findViewById(R.id.serieQR);
         tvmarcaQR = findViewById(R.id.marcaQR);
         tvmodeloQR = findViewById(R.id.modeloQR);
         tvtipoQR = findViewById(R.id.tipoQR);
@@ -231,7 +269,9 @@ public class WsgobConsulta extends AppCompatActivity {
         tvrevisionQR = findViewById(R.id.revisionQR);
 
         tvplacarm2 = findViewById(R.id.placasrm2);
-        tvserialrm2 = findViewById(R.id.serierm2);
+        tvserialrm2 = findViewById(R.id.QRRM2);
+        tvserierm2 = findViewById(R.id.serierm2);
+
         tveconomicorm2 = findViewById(R.id.numeroeconomicorm2);
         tvmarcarm2 = findViewById(R.id.marcarm2);
         tvmodelorm2 = findViewById(R.id.modelorm2);
@@ -317,6 +357,11 @@ public class WsgobConsulta extends AppCompatActivity {
             vigencia = bundle.getString("vigencia");
             vim = bundle.getString("vim");
             marca = bundle.getString("marca");
+
+            economico = bundle.getString("economico");
+            Log.d("ECONOMICO","El numero economico"+ economico);
+
+            tvEconomicos.setText(economico);
             infracciones = bundle.getString("infracciones");
             licencia = bundle.getString("licencia");
 
@@ -360,9 +405,13 @@ public class WsgobConsulta extends AppCompatActivity {
 
 
             String placaQR = bundle.getString("placaQR");
-            String serialQR = bundle.getString("serialQR");
+            String serialQR = bundle.getString("qr_serial");
+            Log.d("SERIALQRCONSULTA","#################################"+serialQR);
+            String delegacionIdQR = bundle.getString("delegacionIdQR");
+
             String economicoQR = bundle.getString("economicoQR");
             String serieQR = bundle.getString("serieQR");
+            Log.d("serieQRRCONSULTA","#################################"+serieQR);
             String marcaQR = bundle.getString("marcaQR");
             String modeloQR = bundle.getString("modeloQR");
             String tipoQR = bundle.getString("tipoQR");
@@ -380,29 +429,44 @@ public class WsgobConsulta extends AppCompatActivity {
             String revisionQR = bundle.getString("revisionQR");
 
 
-            if (serialQR!=null){
-                tvplacaQR.setText(placaQR);
-                tveconomicoQR.setText(economicoQR);
-                tvserialQR.setText(serialQR);
-                tvmarcaQR.setText(marcaQR);
-                tvmodeloQR.setText(modeloQR);
-                tvtipoQR.setText(tipoQR);
-                tvcolorQR.setText(colorQR);
-                tvpadronQR.setText(padronQR);
-                tvmodalidadQR.setText(modalidadQR);
-                tvfechaAltaQR.setText(fechaAltaQR);
-                tvprorrogaQR.setText(prorrogaQR);
-                //tvfechaProrrojgaQR.setText(fechaProrrojgaQR);
-                tvestatusQR.setText(estatusQR);
-                tvcoberturaSeguroQR.setText(coberturaSeguroQR);
-                tvvigenciaPolizaQR.setText(vigenciaPolizaQR);
-                tvperiodoQR.setText(periodoQR);
-                tvobservacionesQR.setText(observacionesQR);
-                tvrevisionQR.setText(revisionQR);
 
-                tablaQR.setVisibility(View.VISIBLE);
-                tituloDatosQR.setVisibility(View.VISIBLE);
-            }
+            String folioGafeteQR = bundle.getString("folioGafeteQR");
+            String delegacionGafeteQR = bundle.getString("delegacionGafeteQR");
+            String modalidadGafeteQR = bundle.getString("modalidadGafeteQR");
+            String serieRegistroGafeteQR = bundle.getString("serieRegistroGafeteQR");
+            String vigenciaGafeteQR = bundle.getString("vigenciaGafeteQR");
+
+            tvfolioGafeteQR.setText(folioGafeteQR);
+            tvdelegacionGafeteQR.setText(delegacionGafeteQR);
+            tvmodalidadGafeteQR.setText(modalidadGafeteQR);
+            tvserieRegistroGafeteQR.setText(serieRegistroGafeteQR);
+            tvvigenciaGafeteQR.setText(vigenciaGafeteQR);
+
+if (serieQR!=null) {
+    tvplacaQR.setText(placaQR);
+    tveconomicoQR.setText(economicoQR);
+    tvserieQR.setText(serieQR);
+    tvserialQR.setText(serialQR);
+    tvdelegacionIdQR.setText(delegacionIdQR);
+    tvmarcaQR.setText(marcaQR);
+    tvmodeloQR.setText(modeloQR);
+    tvtipoQR.setText(tipoQR);
+    tvcolorQR.setText(colorQR);
+    tvpadronQR.setText(padronQR);
+    tvmodalidadQR.setText(modalidadQR);
+    tvfechaAltaQR.setText(fechaAltaQR);
+    tvprorrogaQR.setText(prorrogaQR);
+    //tvfechaProrrojgaQR.setText(fechaProrrojgaQR);
+    tvestatusQR.setText(estatusQR);
+    tvcoberturaSeguroQR.setText(coberturaSeguroQR);
+    tvvigenciaPolizaQR.setText(vigenciaPolizaQR);
+    tvperiodoQR.setText(periodoQR);
+    tvobservacionesQR.setText(observacionesQR);
+    tvrevisionQR.setText(revisionQR);
+
+    tablaQR.setVisibility(View.VISIBLE);
+    tituloDatosQR.setVisibility(View.VISIBLE);
+}
 
 
 
@@ -434,6 +498,7 @@ public class WsgobConsulta extends AppCompatActivity {
                 tvplacarm2.setText(placarm2);
                 tveconomicorm2.setText(economicorm2);
                 tvserialrm2.setText(serialrm2);
+                tvserierm2.setText(serierm2);
                 tvmarcarm2.setText(marcarm2);
                 tvmodelorm2.setText(modelorm2);
                 tvtiporm2.setText(tiporm2);
@@ -441,7 +506,10 @@ public class WsgobConsulta extends AppCompatActivity {
                 tvpadronrm2.setText(padronrm2);
                 tvmodalidadrm2.setText(modalidadrm2);
                 //tvfechaAltarm2.setText(fechaAltarm2);
-                tvprorrogarm2.setText(prorrogarm2);
+
+
+
+
                 //tvfechaProrrojgaQR.setText(fechaProrrojgaQR);
                 tvestatusrm2.setText(estatusrm2);
                 tvcoberturaSegurorm2.setText(coberturaSegurorm2);
@@ -604,6 +672,10 @@ public class WsgobConsulta extends AppCompatActivity {
                             textViewNombre.setText("NO EXISTE EN BD");
                             textViewLicencia.setText("NO EXISTE EN BD");
                             textViewFechaVencimiento.setText("NO EXISTE EN BD");
+
+
+
+
                         }
 
 
@@ -619,6 +691,8 @@ public class WsgobConsulta extends AppCompatActivity {
 
                             String nombreCompleto = nombre+" "+paterno+" "+materno;
 
+
+
                             textViewNombre.setText(nombreCompleto);
                             textViewLicencia.setText(LICENCIA);
                             textViewFechaVencimiento.setText(VENCIMIENTO);
@@ -633,7 +707,8 @@ public class WsgobConsulta extends AppCompatActivity {
                             textViewNombre.setText("NO-LICENCIA");
                             textViewLicencia.setText("NO-LICENCIA");
                             textViewFechaVencimiento.setText("NO-LICENCIA");
-
+                           tblLicencia.setVisibility(View.GONE);
+                            tvTituloLicencia.setVisibility(View.GONE);
                     }
 
                 } else {
@@ -729,9 +804,13 @@ public class WsgobConsulta extends AppCompatActivity {
                         Log.d("infraccion1",infracciones);
                        // Log.d("infraccion2",fechaInfracion);
 
-                       /* if (infracciones.equals("No hay datos")){
+                      /* if (infracciones.equals("No hay datos")){
                             textViewInfracciones.setText("SIN INFRACCIONES");
                             textViewFechaInfracciones.setText("SIN INFRACCIONES");
+
+                           tblIfracciones.setVisibility(View.GONE);
+
+
                         }else{
                             String fechaInfracion = obj.getString("fechaInfracion");
                             textViewInfracciones.setText(infracciones);
