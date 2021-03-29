@@ -32,6 +32,7 @@ import app.simov.teseo.R;
 
 public class WsgobConsulta extends AppCompatActivity {
 
+
     //
 
     String placa;
@@ -121,7 +122,7 @@ public class WsgobConsulta extends AppCompatActivity {
     TextView tvobservacionesrm2;
     TextView tvrevisionrm2;
 
-//
+    //
     TextView tvplacaFolio;
     TextView tvfoliofolio;
     TextView tvdelegacionFolio;
@@ -153,7 +154,7 @@ public class WsgobConsulta extends AppCompatActivity {
     TextView tvfechaLabTarjerton;
     TextView tvestatusTarjerton;
 
-//
+    //
     TableLayout placasPlataformaTabla;
     TableLayout placasRMTabla;
     TableLayout tablaQR;
@@ -161,11 +162,11 @@ public class WsgobConsulta extends AppCompatActivity {
     TableLayout tarjetonFolio;
 //
 
-   TextView tituloPlacasPlataforma;
-   TextView tituloDatosQR;
-   TextView tituloPlacasRM;
-   TextView tituloPlacasFolio;
-   TextView tituloTarjetonFolio;
+    TextView tituloPlacasPlataforma;
+    TextView tituloDatosQR;
+    TextView tituloPlacasRM;
+    TextView tituloPlacasFolio;
+    TextView tituloTarjetonFolio;
 
 
     TextView tvfolioGafeteQR;
@@ -180,6 +181,17 @@ public class WsgobConsulta extends AppCompatActivity {
     TableLayout tblLicencia;
     TextView tvTituloInfracciones;
     TextView tvTituloLicencia;
+
+    String color;
+    String agrupacion;
+    String rutaSitio;
+
+    TextView tvColor;
+    TextView tvAgrupacion;
+    TextView tvRutaSitio;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -212,24 +224,20 @@ public class WsgobConsulta extends AppCompatActivity {
 
         tvEconomicos =  findViewById(R.id.tvEconomicos);
 
-
-
-
         //TaBLAS
 
+        placasPlataformaTabla = findViewById(R.id.placasPlataformaTabla);
+        placasRMTabla = findViewById(R.id.placasRMTablaLay);
+        tablaQR = findViewById(R.id.tablaQRTabla);
+        plataformaFolio = findViewById(R.id.plataformaFolioTabla);
+        tarjetonFolio = findViewById(R.id.tarjetonFolioTabla);
 
+        tituloPlacasPlataforma =findViewById(R.id.tituloPlacasPlataforma);
+        tituloDatosQR = findViewById(R.id.tituloDatosQR);
+        tituloPlacasRM = findViewById(R.id.tituloPlacasRM);
+        tituloPlacasFolio = findViewById(R.id.tituloPlacasFolio);
+        tituloTarjetonFolio = findViewById(R.id.tituloTarjetonFolio);
 
-         placasPlataformaTabla = findViewById(R.id.placasPlataformaTabla);
-         placasRMTabla = findViewById(R.id.placasRMTablaLay);
-         tablaQR = findViewById(R.id.tablaQRTabla);
-         plataformaFolio = findViewById(R.id.plataformaFolioTabla);
-         tarjetonFolio = findViewById(R.id.tarjetonFolioTabla);
-
-         tituloPlacasPlataforma =findViewById(R.id.tituloPlacasPlataforma);
-         tituloDatosQR = findViewById(R.id.tituloDatosQR);
-         tituloPlacasRM = findViewById(R.id.tituloPlacasRM);
-         tituloPlacasFolio = findViewById(R.id.tituloPlacasFolio);
-         tituloTarjetonFolio = findViewById(R.id.tituloTarjetonFolio);
 
 
 
@@ -291,42 +299,44 @@ public class WsgobConsulta extends AppCompatActivity {
 
 
 
-          //FOLIO
-         tvplacaFolio = findViewById(R.id.placasplataformafolio);
-         tvfoliofolio = findViewById(R.id.folioplataformafolio);
-         tvdelegacionFolio = findViewById(R.id.delegacionidplataformafolio);
-         tvnombrePlataformaFolio = findViewById(R.id.plataformaplataformafolio);
-         tvnumeroPolizaFolio = findViewById(R.id.numeropolizaplataformafolio);
-         tvnombrePropietarioFolio = findViewById(R.id.propietarioplataformafolio);
-         tvserieFolio = findViewById(R.id.serieplataformafolio);
-         tvmarcaFolio = findViewById(R.id.marcaplataformafolio);
-         tvtipoFolio = findViewById(R.id.tipoplataformafolio);
-         tvcolorFolio = findViewById(R.id.colorplataformafolio);
-         tvmodeloFolio = findViewById(R.id.modeloplataformafolio);
-         tvfechaVigenciaFolio = findViewById(R.id.fechavigenciaplataformafolio);
-         tvfechaAltaFolio = findViewById(R.id.fechaaltaplataformafolio);
-         tvnombreSocioFolio = findViewById(R.id.nombresocioplataformafolio);
-         tvestatusFolio = findViewById(R.id.estatusplataformafolio);
-         tvestatusFolio = findViewById(R.id.estatusplataformafolio);
+        //FOLIO
+        tvplacaFolio = findViewById(R.id.placasplataformafolio);
+        tvfoliofolio = findViewById(R.id.folioplataformafolio);
+        tvdelegacionFolio = findViewById(R.id.delegacionidplataformafolio);
+        tvnombrePlataformaFolio = findViewById(R.id.plataformaplataformafolio);
+        tvnumeroPolizaFolio = findViewById(R.id.numeropolizaplataformafolio);
+        tvnombrePropietarioFolio = findViewById(R.id.propietarioplataformafolio);
+        tvserieFolio = findViewById(R.id.serieplataformafolio);
+        tvmarcaFolio = findViewById(R.id.marcaplataformafolio);
+        tvtipoFolio = findViewById(R.id.tipoplataformafolio);
+        tvcolorFolio = findViewById(R.id.colorplataformafolio);
+        tvmodeloFolio = findViewById(R.id.modeloplataformafolio);
+        tvfechaVigenciaFolio = findViewById(R.id.fechavigenciaplataformafolio);
+        tvfechaAltaFolio = findViewById(R.id.fechaaltaplataformafolio);
+        tvnombreSocioFolio = findViewById(R.id.nombresocioplataformafolio);
+        tvestatusFolio = findViewById(R.id.estatusplataformafolio);
+        tvestatusFolio = findViewById(R.id.estatusplataformafolio);
 
 
-         //TARJETON
+        //TARJETON
 
 
-         tvlnumeroTarjeton = findViewById(R.id.lnumerotarjetonfolio);
-         tvlicenciaTarjeton = findViewById(R.id.licenciatarjetonfolio);
-         tvtipoChoferTarjeton = findViewById(R.id.tipochofertarjetonfolio);
-         tvfolioTarjeton = findViewById(R.id.foliotarjetonfolio);
-         tvmaternoTarjeton = findViewById(R.id.maternotarjetonfolio);
-         tvpaternoTarjerton = findViewById(R.id.paternotarjetonfolio);
-         tvnombreTarjeton = findViewById(R.id.nombretarjetonfolio);
-         tvfechaAltaTarjeton = findViewById(R.id.fechaaltatarjetonfolio);
-         tvfechaVigenciaTarjeton = findViewById(R.id.fechavigenciatarjtonfolio);
-         tvfechaLabTarjerton = findViewById(R.id.fechalaboratoriotarjetonfolio);
-         tvestatusTarjerton = findViewById(R.id.estatusfoliotarjetonfolio);
+        tvlnumeroTarjeton = findViewById(R.id.lnumerotarjetonfolio);
+        tvlicenciaTarjeton = findViewById(R.id.licenciatarjetonfolio);
+        tvtipoChoferTarjeton = findViewById(R.id.tipochofertarjetonfolio);
+        tvfolioTarjeton = findViewById(R.id.foliotarjetonfolio);
+        tvmaternoTarjeton = findViewById(R.id.maternotarjetonfolio);
+        tvpaternoTarjerton = findViewById(R.id.paternotarjetonfolio);
+        tvnombreTarjeton = findViewById(R.id.nombretarjetonfolio);
+        tvfechaAltaTarjeton = findViewById(R.id.fechaaltatarjetonfolio);
+        tvfechaVigenciaTarjeton = findViewById(R.id.fechavigenciatarjtonfolio);
+        tvfechaLabTarjerton = findViewById(R.id.fechalaboratoriotarjetonfolio);
+        tvestatusTarjerton = findViewById(R.id.estatusfoliotarjetonfolio);
 
 
-
+        tvColor = findViewById(R.id.tvColor);
+        tvAgrupacion = findViewById(R.id.tvAgrupacion);
+        tvRutaSitio = findViewById(R.id.tvRutaSitio);
 
 
         //RM
@@ -357,6 +367,19 @@ public class WsgobConsulta extends AppCompatActivity {
             vigencia = bundle.getString("vigencia");
             vim = bundle.getString("vim");
             marca = bundle.getString("marca");
+
+
+            color  = bundle.getString("colorW");
+            agrupacion  = bundle.getString("agrupacionW");
+            rutaSitio  = bundle.getString("rutaSitioW");
+
+            Log.d("datoswsInserta2","###################"+color);
+
+
+            tvColor.setText(color);
+            tvAgrupacion.setText(agrupacion);
+            tvRutaSitio.setText(rutaSitio);
+
 
             economico = bundle.getString("economico");
             Log.d("ECONOMICO","El numero economico"+ economico);
@@ -442,31 +465,31 @@ public class WsgobConsulta extends AppCompatActivity {
             tvserieRegistroGafeteQR.setText(serieRegistroGafeteQR);
             tvvigenciaGafeteQR.setText(vigenciaGafeteQR);
 
-if (serieQR!=null) {
-    tvplacaQR.setText(placaQR);
-    tveconomicoQR.setText(economicoQR);
-    tvserieQR.setText(serieQR);
-    tvserialQR.setText(serialQR);
-    tvdelegacionIdQR.setText(delegacionIdQR);
-    tvmarcaQR.setText(marcaQR);
-    tvmodeloQR.setText(modeloQR);
-    tvtipoQR.setText(tipoQR);
-    tvcolorQR.setText(colorQR);
-    tvpadronQR.setText(padronQR);
-    tvmodalidadQR.setText(modalidadQR);
-    tvfechaAltaQR.setText(fechaAltaQR);
-    tvprorrogaQR.setText(prorrogaQR);
-    //tvfechaProrrojgaQR.setText(fechaProrrojgaQR);
-    tvestatusQR.setText(estatusQR);
-    tvcoberturaSeguroQR.setText(coberturaSeguroQR);
-    tvvigenciaPolizaQR.setText(vigenciaPolizaQR);
-    tvperiodoQR.setText(periodoQR);
-    tvobservacionesQR.setText(observacionesQR);
-    tvrevisionQR.setText(revisionQR);
+            if (serieQR!=null) {
+                tvplacaQR.setText(placaQR);
+                tveconomicoQR.setText(economicoQR);
+                tvserieQR.setText(serieQR);
+                tvserialQR.setText(serialQR);
+                tvdelegacionIdQR.setText(delegacionIdQR);
+                tvmarcaQR.setText(marcaQR);
+                tvmodeloQR.setText(modeloQR);
+                tvtipoQR.setText(tipoQR);
+                tvcolorQR.setText(colorQR);
+                tvpadronQR.setText(padronQR);
+                tvmodalidadQR.setText(modalidadQR);
+                tvfechaAltaQR.setText(fechaAltaQR);
+                tvprorrogaQR.setText(prorrogaQR);
+                //tvfechaProrrojgaQR.setText(fechaProrrojgaQR);
+                tvestatusQR.setText(estatusQR);
+                tvcoberturaSeguroQR.setText(coberturaSeguroQR);
+                tvvigenciaPolizaQR.setText(vigenciaPolizaQR);
+                tvperiodoQR.setText(periodoQR);
+                tvobservacionesQR.setText(observacionesQR);
+                tvrevisionQR.setText(revisionQR);
 
-    tablaQR.setVisibility(View.VISIBLE);
-    tituloDatosQR.setVisibility(View.VISIBLE);
-}
+                tablaQR.setVisibility(View.VISIBLE);
+                tituloDatosQR.setVisibility(View.VISIBLE);
+            }
 
 
 
@@ -543,25 +566,25 @@ if (serieQR!=null) {
 
             Log.d("RMWSGOB------%","VALOR"+placaPlataforma);
 
-                if (delegacionPlataforma!=null){
-                    tvplacasRM.setText(placaPlataforma);
-                    tvdelegacionRM.setText(delegacionPlataforma);
-                    tvplataformaRM.setText(nombrePlataforma);
-                    tvpolizaRM.setText(polizaPlataforma);
-                    tvpropietarioRM.setText(propietarioPlataforma);
-                    tvserieRM.setText(seriePlataforma);
-                    tvmarcaRM.setText(marcaPlataforma);
-                    tvtipoRM.setText(tipoPlataforma);
-                    tvcolorRM.setText(colorPlataforma);
-                    tvmodeloRM.setText(modeloPlataforma);
-                    tvvigenciaRM.setText(vigenciaPlataforma);
-                    tvsocioRM.setText(socioPlataforma);
-                    tvstatusRM.setText(estatusPlataforma);
+            if (delegacionPlataforma!=null){
+                tvplacasRM.setText(placaPlataforma);
+                tvdelegacionRM.setText(delegacionPlataforma);
+                tvplataformaRM.setText(nombrePlataforma);
+                tvpolizaRM.setText(polizaPlataforma);
+                tvpropietarioRM.setText(propietarioPlataforma);
+                tvserieRM.setText(seriePlataforma);
+                tvmarcaRM.setText(marcaPlataforma);
+                tvtipoRM.setText(tipoPlataforma);
+                tvcolorRM.setText(colorPlataforma);
+                tvmodeloRM.setText(modeloPlataforma);
+                tvvigenciaRM.setText(vigenciaPlataforma);
+                tvsocioRM.setText(socioPlataforma);
+                tvstatusRM.setText(estatusPlataforma);
 
-                    placasPlataformaTabla.setVisibility(View.VISIBLE);
-                    tituloPlacasPlataforma.setVisibility(View.VISIBLE);
+                placasPlataformaTabla.setVisibility(View.VISIBLE);
+                tituloPlacasPlataforma.setVisibility(View.VISIBLE);
 
-                }
+            }
 
 
 
@@ -703,12 +726,12 @@ if (serieQR!=null) {
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                            //Seteamos valor cuando no se ingrese licencia
-                            textViewNombre.setText("NO-LICENCIA");
-                            textViewLicencia.setText("NO-LICENCIA");
-                            textViewFechaVencimiento.setText("NO-LICENCIA");
-                           tblLicencia.setVisibility(View.GONE);
-                            tvTituloLicencia.setVisibility(View.GONE);
+                        //Seteamos valor cuando no se ingrese licencia
+                        textViewNombre.setText("NO-LICENCIA");
+                        textViewLicencia.setText("NO-LICENCIA");
+                        textViewFechaVencimiento.setText("NO-LICENCIA");
+                        tblLicencia.setVisibility(View.GONE);
+                        tvTituloLicencia.setVisibility(View.GONE);
                     }
 
                 } else {
@@ -792,7 +815,7 @@ if (serieQR!=null) {
                 //Validamos que el response no este vacio
                 if (!response.isEmpty()) {
                     //Esto contiene toda la cadena de respuesta del Ws.
-                   // Toast.makeText(WsgobConsulta.this, "SE MANDO PETICION CORRECTA A WS INFRACCIONES" + response, Toast.LENGTH_LONG).show();
+                    // Toast.makeText(WsgobConsulta.this, "SE MANDO PETICION CORRECTA A WS INFRACCIONES" + response, Toast.LENGTH_LONG).show();
 
                     try {
                         //Convertimos el String en JsonObject
@@ -801,8 +824,8 @@ if (serieQR!=null) {
                         //Accedemos al valor del Objeto deseado completo.
                         String infracciones = obj.getString("infracciones");
 
-                        Log.d("infraccion1",infracciones);
-                       // Log.d("infraccion2",fechaInfracion);
+                        // Log.d("LAINFRACCION","CONTENIDO DE LAS INFRACCIONES"+ infracc);
+                        // Log.d("infraccion2",fechaInfracion);
 
                       /* if (infracciones.equals("No hay datos")){
                             textViewInfracciones.setText("SIN INFRACCIONES");

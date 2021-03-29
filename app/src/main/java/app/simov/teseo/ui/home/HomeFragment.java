@@ -594,7 +594,7 @@ public class HomeFragment extends Fragment  {
                     placa = editTextPlaca.getText().toString(); //gets you the contents of edit text
 
                     Log.d("Variable", "LICENCIA## " + placa);
-                    String URL = "https://simov.app/servicios/controlVehicular.php";
+                    String URL = "https://simov.app/servicios/controlVehicularNew.php";
                     String URL2  = "https://simov.app/servicios/abdiel.php";
                     //Envia Ws
                     enviarWSConsulta(URL);
@@ -627,8 +627,527 @@ public class HomeFragment extends Fragment  {
         startActivityForResult(intent, 101);
     }
 
-
     private void enviarWSConsulta(String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            //Para mandar un post aun WS el response Listener tiene que ser de tipo  String , y despues convertir la respuesta a JsonObject.
+            public void onResponse(String response) {
+                //Validamos que el response no este vacio
+                if (!response.isEmpty()) {
+                    //Esto contiene toda la cadena de respuesta del Ws.
+                    //Toast.makeText(getContext(), "CONSULTA" + response, Toast.LENGTH_LONG).show();
+
+                    try {
+                        //Convertimos el String en JsonObject
+                        JSONArray jsonarray = new JSONArray(response);
+                        //Aqui hay que continuarle compa..
+
+
+                        Log.d("objVehicular", "###Respuesta WS padron vehicular" + jsonarray.toString());
+                        //Accedemos al valor del Objeto deseado completo.
+                        // JSONArray jsonarray = obj.getJSONArray("data");
+
+                        //Log.w("jARRAY","### QUE TIENE EL ARRAY?"+jsonarray.toString());
+
+
+                        if (jsonarray.length()==0){
+                            Log.d("#####","#### ENTRE");
+                            Intent intentWs = new Intent(getActivity(), WsgobConsulta.class);
+                            licencia = editTextLicencia.getText().toString();
+                            intentWs.putExtra("licencia", licencia);
+                            placa = editTextPlaca.getText().toString();
+                            //Spinner Modalidad
+                            // modalidad =spinnerModalidad.getSelectedItem().toString();
+                            intentWs.putExtra("modalidad",modalidad);
+                            intentWs.putExtra("placa", placa);
+
+
+                            intentWs.putExtra("usersId",usersId);
+                            Log.d("HomeFragment","USERSID########################--->"+usersId);
+                            intentWs.putExtra("username",username);
+                            intentWs.putExtra("profile",profile);
+                            intentWs.putExtra("nombre",nombre);
+                            intentWs.putExtra("delegacionId",delegacionId);
+                            intentWs.putExtra("activo",activo);
+
+
+                            intentWs.putExtra("placaPlataforma",placaPlataforma);
+                            Log.d("RMWSGOB","VALOR"+placaPlataforma);
+
+                            Log.d("RMWSGOB1","VALOR"+placaPlataforma);
+
+                            intentWs.putExtra("delegacionPlataforma",delegacionIDPlataforma);
+                            intentWs.putExtra("nombrePlataforma",nombre_plataformaPlataforma);
+                            intentWs.putExtra("polizaPlataforma",numero_polizaPlataforma);
+                            intentWs.putExtra("propietarioPlataforma",nombre_propietarioPlataforma);
+                            intentWs.putExtra("seriePlataforma",seriePlataforma);
+                            intentWs.putExtra("marcaPlataforma",marcaPlataforma);
+                            intentWs.putExtra("tipoPlataforma",tipoPlataforma);
+                            intentWs.putExtra("colorPlataforma",colorPlataforma);
+                            intentWs.putExtra("modeloPlataforma",modeloPlataforma);
+                            intentWs.putExtra("vigenciaPlataforma",fecha_vigenciaPlataforma);
+                            intentWs.putExtra("socioPlataforma",nombre_socioPlataforma);
+                            intentWs.putExtra("estatusPlataforma",estatusPlataforma);
+
+
+                            intentWs.putExtra("placaQR",placaQR);
+                            intentWs.putExtra("qr_serial",serialQR);
+                            intentWs.putExtra("delegacionIdQR",delegacionIdQR);
+                            intentWs.putExtra("economicoQR",economicoQR);
+                            intentWs.putExtra("serieQR",serieQR);
+                            intentWs.putExtra("marcaQR",marcaQR);
+                            intentWs.putExtra("modeloQR",modeloQR);
+                            intentWs.putExtra("tipoQR",tipoQR);
+                            intentWs.putExtra("colorQR",colorQR);
+                            intentWs.putExtra("padronQR",padronQR);
+                            intentWs.putExtra("modalidadQR",modalidadQR);
+                            intentWs.putExtra("fechaAltaQR",fechaAltaQR);
+                            intentWs.putExtra("prorrogaQR",prorrogaQR);
+                            intentWs.putExtra("fechaProrrojgaQR",fechaProrrojgaQR);
+                            intentWs.putExtra("estatusQR",estatusQR);
+                            intentWs.putExtra("coberturaSeguroQR",coberturaSeguroQR);
+                            intentWs.putExtra("vigenciaPolizaQR",vigenciaPolizaQR);
+                            intentWs.putExtra("periodoQR",periodoQR);
+                            intentWs.putExtra("observacionesQR",observacionesQR);
+                            intentWs.putExtra("revisionQR",revisionQR);
+
+                            intentWs.putExtra("placarm2",placarm2);
+                            intentWs.putExtra("serialrm2",serialrm2);
+                            intentWs.putExtra("delegacionrm2",delegacionrm2);
+                            intentWs.putExtra("economicorm2",economicorm2);
+                            intentWs.putExtra("serierm2",serierm2);
+                            intentWs.putExtra("marcarm2",marcarm2);
+                            intentWs.putExtra("modelorm2",modelorm2);
+                            intentWs.putExtra("tiporm2",tiporm2);
+                            intentWs.putExtra("colorrm2",colorrm2);
+                            intentWs.putExtra("padronrm2",padronrm2);
+                            intentWs.putExtra("modalidadrm2",modalidadrm2);
+                            intentWs.putExtra("fechaAltarm2",fechaAltarm2);
+                            intentWs.putExtra("prorrogarm2",prorrogarm2);
+                            intentWs.putExtra("fechaProrrojgarm2",fechaProrrojgarm2);
+                            intentWs.putExtra("estatusrm2",estatusrm2);
+                            intentWs.putExtra("coberturaSegurorm2",coberturaSegurorm2);
+                            intentWs.putExtra("vigenciaPolizarm2",vigenciaPolizarm2);
+                            intentWs.putExtra("periodorm2",periodorm2);
+                            intentWs.putExtra("observacionesrm2",observacionesrm2);
+                            intentWs.putExtra("revisionrm22",revisionrm22);
+
+
+
+
+
+
+
+
+
+                            intentWs.putExtra("placaFolio",placaFolio);
+                            intentWs.putExtra("foliofolio",foliofolio);
+                            intentWs.putExtra("delegacionFolio",delegacionFolio);
+                            intentWs.putExtra("nombrePlataformaFolio",nombrePlataformaFolio);
+                            intentWs.putExtra("numeroPolizaFolio",numeroPolizaFolio);
+                            intentWs.putExtra("nombrePropietarioFolio",nombrePropietarioFolio);
+                            intentWs.putExtra("serieFolio",serieFolio);
+                            intentWs.putExtra("marcaFolio",marcaFolio);
+                            intentWs.putExtra("tipoFolio",tipoFolio);
+                            intentWs.putExtra("colorFolio",colorFolio);
+                            intentWs.putExtra("modeloFolio",modeloFolio);
+                            intentWs.putExtra("fechaVigenciaFolio",fechaVigenciaFolio);
+                            intentWs.putExtra("fechaAltaFolio",fechaAltaFolio);
+                            intentWs.putExtra("fechaVigenciaFoliio",fechaVigenciaFoliio);
+                            intentWs.putExtra("nombreSocioFolio",nombreSocioFolio);
+                            intentWs.putExtra("estatusFolio",estatusFolio);
+
+
+
+                            intentWs.putExtra("lnumeroTarjeton",lnumeroTarjeton);
+                            intentWs.putExtra("licenciaTarjeton",licenciaTarjeton);
+                            intentWs.putExtra("tipoChoferTarjeton",tipoChoferTarjeton);
+                            intentWs.putExtra("folioTarjeton",folioTarjeton);
+                            intentWs.putExtra("maternoTarjeton",maternoTarjeton);
+                            intentWs.putExtra("paternoTarjerton",paternoTarjerton);
+                            intentWs.putExtra("nombreTarjeton",nombreTarjeton);
+                            intentWs.putExtra("fechaAltaTarjeton",fechaAltaTarjeton);
+                            intentWs.putExtra("fechaVigenciaTarjeton",fechaVigenciaTarjeton);
+                            intentWs.putExtra("fechaLabTarjerton",fechaLabTarjerton);
+                            intentWs.putExtra("estatusTarjerton",estatusTarjerton);
+
+                            intentWs.putExtra("folioGafeteQR",folioGafeteQR);
+                            intentWs.putExtra("delegacionGafeteQR",delegacionGafeteQR);
+                            intentWs.putExtra("modalidadGafeteQR",modalidadGafeteQR);
+                            intentWs.putExtra("serieRegistroGafeteQR",serieRegistroGafeteQR);
+                            intentWs.putExtra("vigenciaGafeteQR",vigenciaGafeteQR);
+
+
+
+                            startActivity(intentWs);
+                            getActivity().finish();
+                        }
+
+                        //Obtenemos el total de elementos del objeto.
+                        for (int i = 0; i < jsonarray.length(); i++) {
+                            // JSONObject jsonobject = jsonarray.getJSONObject(i);
+                            //Accedemos a los elementos por medio de getString.
+
+
+                            //Iniciamos actividad y mandamos parametros.
+                            Intent intentWs = new Intent(getActivity(), WsgobConsulta.class);
+                            String PLACA = jsonarray.getString(0);
+                            Log.d("vergasVato","### $#$#$$$US"+PLACA);
+                            // Boolean validaEstatus = false;
+
+
+
+                            try {
+                                String  ESTATUS = jsonarray.getString(24);
+
+
+                                if (ESTATUS.equals("ACTIVO") || ESTATUS.equals("BAJA TEMPORAL") ){
+                                    intentWs.putExtra("economico", "NO APLICA");
+                                    intentWs.putExtra("estatus", ESTATUS);
+                                    String VIGENCIA = jsonarray.getString(23);
+                                    intentWs.putExtra("vigencia", VIGENCIA);
+                                    Log.d("ESATUS","### VALOR ESTATUS"+ESTATUS);
+
+                                    Boolean validaFechaVencimiento = false;
+
+                                    // modalidad =spinnerModalidad.getSelectedItem().toString();
+                                    String PROPIETARIO = jsonarray.getString(18);
+
+                                    String VIM = jsonarray.getString(1);
+
+                                    String MARCA = jsonarray.getString(3);
+
+                                    intentWs.putExtra("propietario", PROPIETARIO);
+
+                                    intentWs.putExtra("vim", VIM);
+                                    intentWs.putExtra("marca", MARCA);
+
+                                }
+
+                            }catch (Exception e){
+
+                            }
+                            try {
+                                String  ESTATUST = jsonarray.getString(2);
+                                Log.d("WS111","entreeeeeee   "+ESTATUST);
+                                if (ESTATUST.equals("ACTIVO") || ESTATUST.equals("BAJA TEMPORAL") ){
+                                    Log.d("WS44","entreeeeeee   "+ESTATUST);
+                                    intentWs.putExtra("estatus", ESTATUST);
+                                    String economico = jsonarray.getString(1);
+                                    intentWs.putExtra("economico", economico);
+                                    String MARCA = jsonarray.getString(4);
+                                    intentWs.putExtra("marca", MARCA);
+                                    String VIM = jsonarray.getString(5);
+                                    intentWs.putExtra("vim", VIM);
+                                    String PROPIETARIO = jsonarray.getString(6);
+                                    intentWs.putExtra("propietario", PROPIETARIO);
+                                    String VIGENCIA = jsonarray.getString(3);
+                                    intentWs.putExtra("vigencia", VIGENCIA);
+
+                                    String COLOR = jsonarray.getString(7);
+                                    String AGRUPACION = jsonarray.getString(8);
+                                    String RUTASITIO = jsonarray.getString(9);
+
+                                    Log.d("datoswsInserta1","###################"+COLOR);
+
+
+                                    intentWs.putExtra("colorW", COLOR);
+                                    intentWs.putExtra("agrupacionW", AGRUPACION);
+                                    intentWs.putExtra("rutaSitioW", RUTASITIO);
+
+
+                                }
+                            }catch (Exception e){
+
+                            }
+
+
+                           /* if (validaFechaVencimiento==false){
+                                String economico = jsonarray.getString(0);
+                                intentWs.putExtra("economico", economico);
+                                String VIGENCIA = jsonarray.getString(0);
+                                intentWs.putExtra("vigencia", VIGENCIA);
+                                Log.d("ESATUS","### VALOR ESTATUS"+VIGENCIA);
+                            }else {
+                                String VIGENCIA = jsonarray.getString(26);
+                                intentWs.putExtra("vigencia", VIGENCIA);
+                            }*/
+
+                            intentWs.putExtra("usersId",usersId);
+                            Log.d("HomeFragment","USERSID########################--->"+usersId);
+                            intentWs.putExtra("username",username);
+                            intentWs.putExtra("profile",profile);
+                            intentWs.putExtra("nombre",nombre);
+                            intentWs.putExtra("delegacionId",delegacionId);
+                            intentWs.putExtra("activo",activo);
+
+                            licencia = editTextLicencia.getText().toString();
+                            intentWs.putExtra("licencia", licencia);
+                            Log.d("licencia1", "###Valor de la licencia" + licencia);
+                            intentWs.putExtra("bandera", enviaBanderaLic);
+                            intentWs.putExtra("placa", PLACA);
+                            // intentWs.putExtra("modalidad",modalidad);
+
+
+
+
+
+                            intentWs.putExtra("placaQR",placaQR);
+                            intentWs.putExtra("qr_serial",serialQR);
+                            intentWs.putExtra("delegacionIdQR",delegacionIdQR);
+                            intentWs.putExtra("economicoQR",economicoQR);
+                            intentWs.putExtra("serieQR",serieQR);
+                            intentWs.putExtra("marcaQR",marcaQR);
+                            intentWs.putExtra("modeloQR",modeloQR);
+                            intentWs.putExtra("tipoQR",tipoQR);
+                            intentWs.putExtra("colorQR",colorQR);
+                            intentWs.putExtra("padronQR",padronQR);
+                            intentWs.putExtra("modalidadQR",modalidadQR);
+                            intentWs.putExtra("fechaAltaQR",fechaAltaQR);
+                            intentWs.putExtra("prorrogaQR",prorrogaQR);
+                            intentWs.putExtra("fechaProrrojgaQR",fechaProrrojgaQR);
+                            intentWs.putExtra("estatusQR",estatusQR);
+                            intentWs.putExtra("coberturaSeguroQR",coberturaSeguroQR);
+                            intentWs.putExtra("vigenciaPolizaQR",vigenciaPolizaQR);
+                            intentWs.putExtra("periodoQR",periodoQR);
+                            intentWs.putExtra("observacionesQR",observacionesQR);
+                            intentWs.putExtra("revisionQR",revisionQR);
+
+
+                            intentWs.putExtra("placarm2",placarm2);
+                            intentWs.putExtra("serialrm2",serialrm2);
+                            intentWs.putExtra("economicorm2",economicorm2);
+                            intentWs.putExtra("serierm2",serierm2);
+                            intentWs.putExtra("marcarm2",marcarm2);
+                            intentWs.putExtra("modelorm2",modelorm2);
+                            intentWs.putExtra("tiporm2",tiporm2);
+                            intentWs.putExtra("colorrm2",colorrm2);
+                            intentWs.putExtra("padronrm2",padronrm2);
+                            intentWs.putExtra("modalidadrm2",modalidadrm2);
+                            intentWs.putExtra("fechaAltarm2",fechaAltarm2);
+                            intentWs.putExtra("prorrogarm2",prorrogarm2);
+                            intentWs.putExtra("fechaProrrojgarm2",fechaProrrojgarm2);
+                            intentWs.putExtra("estatusrm2",estatusrm2);
+                            intentWs.putExtra("coberturaSegurorm2",coberturaSegurorm2);
+                            intentWs.putExtra("vigenciaPolizarm2",vigenciaPolizarm2);
+                            intentWs.putExtra("periodorm2",periodorm2);
+                            intentWs.putExtra("observacionesrm2",observacionesrm2);
+                            intentWs.putExtra("revisionrm22",revisionrm22);
+
+
+                            intentWs.putExtra("placaPlataforma",placaPlataforma);
+                            Log.d("RMWSGOB2","VALOR"+placaPlataforma);
+
+                            intentWs.putExtra("delegacionPlataforma",delegacionIDPlataforma);
+                            intentWs.putExtra("nombrePlataforma",nombre_plataformaPlataforma);
+                            intentWs.putExtra("polizaPlataforma",numero_polizaPlataforma);
+                            intentWs.putExtra("propietarioPlataforma",nombre_propietarioPlataforma);
+                            intentWs.putExtra("seriePlataforma",seriePlataforma);
+                            intentWs.putExtra("marcaPlataforma",marcaPlataforma);
+                            intentWs.putExtra("tipoPlataforma",tipoPlataforma);
+                            intentWs.putExtra("colorPlataforma",colorPlataforma);
+                            intentWs.putExtra("modeloPlataforma",modeloPlataforma);
+                            intentWs.putExtra("vigenciaPlataforma",fecha_vigenciaPlataforma);
+                            intentWs.putExtra("socioPlataforma",nombre_socioPlataforma);
+                            intentWs.putExtra("estatusPlataforma",estatusPlataforma);
+
+
+
+                            intentWs.putExtra("placaFolio",placaFolio);
+                            intentWs.putExtra("foliofolio",foliofolio);
+                            intentWs.putExtra("delegacionFolio",delegacionFolio);
+                            intentWs.putExtra("nombrePlataformaFolio",nombrePlataformaFolio);
+                            intentWs.putExtra("numeroPolizaFolio",numeroPolizaFolio);
+                            intentWs.putExtra("nombrePropietarioFolio",nombrePropietarioFolio);
+                            intentWs.putExtra("serieFolio",serieFolio);
+                            intentWs.putExtra("marcaFolio",marcaFolio);
+                            intentWs.putExtra("tipoFolio",tipoFolio);
+                            intentWs.putExtra("colorFolio",colorFolio);
+                            intentWs.putExtra("modeloFolio",modeloFolio);
+                            intentWs.putExtra("fechaVigenciaFolio",fechaVigenciaFolio);
+                            intentWs.putExtra("fechaAltaFolio",fechaAltaFolio);
+                            intentWs.putExtra("fechaVigenciaFoliio",fechaVigenciaFoliio);
+                            intentWs.putExtra("nombreSocioFolio",nombreSocioFolio);
+                            intentWs.putExtra("estatusFolio",estatusFolio);
+
+
+                            intentWs.putExtra("lnumeroTarjeton",lnumeroTarjeton);
+                            intentWs.putExtra("licenciaTarjeton",licenciaTarjeton);
+                            intentWs.putExtra("tipoChoferTarjeton",tipoChoferTarjeton);
+                            intentWs.putExtra("folioTarjeton",folioTarjeton);
+                            intentWs.putExtra("maternoTarjeton",maternoTarjeton);
+                            intentWs.putExtra("paternoTarjerton",paternoTarjerton);
+                            intentWs.putExtra("nombreTarjeton",nombreTarjeton);
+                            intentWs.putExtra("fechaAltaTarjeton",fechaAltaTarjeton);
+                            intentWs.putExtra("fechaVigenciaTarjeton",fechaVigenciaTarjeton);
+                            intentWs.putExtra("fechaLabTarjerton",fechaLabTarjerton);
+                            intentWs.putExtra("estatusTarjerton",estatusTarjerton);
+
+
+                            intentWs.putExtra("folioGafeteQR",folioGafeteQR);
+                            intentWs.putExtra("delegacionGafeteQR",delegacionGafeteQR);
+                            intentWs.putExtra("modalidadGafeteQR",modalidadGafeteQR);
+                            intentWs.putExtra("serieRegistroGafeteQR",serieRegistroGafeteQR);
+                            intentWs.putExtra("vigenciaGafeteQR",vigenciaGafeteQR);
+
+                            startActivity(intentWs);
+                            getActivity().finish();
+
+                        }
+
+
+                    } catch (JSONException e) {
+                        Intent intentWs = new Intent(getActivity(), WsgobConsulta.class);
+
+                        intentWs.putExtra("usersId",usersId);
+                        Log.d("HomeFragment","USERSID########################--->"+usersId);
+                        intentWs.putExtra("username",username);
+                        intentWs.putExtra("profile",profile);
+                        intentWs.putExtra("nombre",nombre);
+                        intentWs.putExtra("delegacionId",delegacionId);
+                        intentWs.putExtra("activo",activo);
+
+                        licencia = editTextLicencia.getText().toString();
+                        intentWs.putExtra("licencia", licencia);
+                        intentWs.putExtra("placa", "NO-PLACA");
+                        Log.d("licencia2", "###Valor de la licencia" + licencia);
+                        intentWs.putExtra("bandera", enviaBanderaLic);
+
+
+                        intentWs.putExtra("placaQR",placaQR);
+                        intentWs.putExtra("qr_serial",serialQR);
+                        intentWs.putExtra("delegacionIdQR",delegacionIdQR);
+                        intentWs.putExtra("economicoQR",economicoQR);
+                        intentWs.putExtra("serieQR",serieQR);
+                        intentWs.putExtra("marcaQR",marcaQR);
+                        intentWs.putExtra("modeloQR",modeloQR);
+                        intentWs.putExtra("tipoQR",tipoQR);
+                        intentWs.putExtra("colorQR",colorQR);
+                        intentWs.putExtra("padronQR",padronQR);
+                        intentWs.putExtra("modalidadQR",modalidadQR);
+                        intentWs.putExtra("fechaAltaQR",fechaAltaQR);
+                        intentWs.putExtra("prorrogaQR",prorrogaQR);
+                        intentWs.putExtra("fechaProrrojgaQR",fechaProrrojgaQR);
+                        intentWs.putExtra("estatusQR",estatusQR);
+                        intentWs.putExtra("coberturaSeguroQR",coberturaSeguroQR);
+                        intentWs.putExtra("vigenciaPolizaQR",vigenciaPolizaQR);
+                        intentWs.putExtra("periodoQR",periodoQR);
+                        intentWs.putExtra("observacionesQR",observacionesQR);
+                        intentWs.putExtra("revisionQR",revisionQR);
+
+
+                        intentWs.putExtra("placarm2",placarm2);
+                        intentWs.putExtra("serialrm2",serialrm2);
+                        intentWs.putExtra("economicorm2",economicorm2);
+                        intentWs.putExtra("serierm2",serierm2);
+                        intentWs.putExtra("marcarm2",marcarm2);
+                        intentWs.putExtra("modelorm2",modelorm2);
+                        intentWs.putExtra("tiporm2",tiporm2);
+                        intentWs.putExtra("colorrm2",colorrm2);
+                        intentWs.putExtra("padronrm2",padronrm2);
+                        intentWs.putExtra("modalidadrm2",modalidadrm2);
+                        intentWs.putExtra("fechaAltarm2",fechaAltarm2);
+                        intentWs.putExtra("prorrogarm2",prorrogarm2);
+                        intentWs.putExtra("fechaProrrojgarm2",fechaProrrojgarm2);
+                        intentWs.putExtra("estatusrm2",estatusrm2);
+                        intentWs.putExtra("coberturaSegurorm2",coberturaSegurorm2);
+                        intentWs.putExtra("vigenciaPolizarm2",vigenciaPolizarm2);
+                        intentWs.putExtra("periodorm2",periodorm2);
+                        intentWs.putExtra("observacionesrm2",observacionesrm2);
+                        intentWs.putExtra("revisionrm22",revisionrm22);
+
+                        intentWs.putExtra("placaPlataforma",placaPlataforma);
+                        Log.d("RMWSGOB3","VALOR"+placaPlataforma);
+
+                        intentWs.putExtra("delegacionPlataforma",delegacionIDPlataforma);
+                        intentWs.putExtra("nombrePlataforma",nombre_plataformaPlataforma);
+                        intentWs.putExtra("polizaPlataforma",numero_polizaPlataforma);
+                        intentWs.putExtra("propietarioPlataforma",nombre_propietarioPlataforma);
+                        intentWs.putExtra("seriePlataforma",seriePlataforma);
+                        intentWs.putExtra("marcaPlataforma",marcaPlataforma);
+                        intentWs.putExtra("tipoPlataforma",tipoPlataforma);
+                        intentWs.putExtra("colorPlataforma",colorPlataforma);
+                        intentWs.putExtra("modeloPlataforma",modeloPlataforma);
+                        intentWs.putExtra("vigenciaPlataforma",fecha_vigenciaPlataforma);
+                        intentWs.putExtra("socioPlataforma",nombre_socioPlataforma);
+                        intentWs.putExtra("estatusPlataforma",estatusPlataforma);
+
+
+
+                        intentWs.putExtra("placaFolio",placaFolio);
+                        intentWs.putExtra("foliofolio",foliofolio);
+                        intentWs.putExtra("delegacionFolio",delegacionFolio);
+                        intentWs.putExtra("nombrePlataformaFolio",nombrePlataformaFolio);
+                        intentWs.putExtra("numeroPolizaFolio",numeroPolizaFolio);
+                        intentWs.putExtra("nombrePropietarioFolio",nombrePropietarioFolio);
+                        intentWs.putExtra("serieFolio",serieFolio);
+                        intentWs.putExtra("marcaFolio",marcaFolio);
+                        intentWs.putExtra("tipoFolio",tipoFolio);
+                        intentWs.putExtra("colorFolio",colorFolio);
+                        intentWs.putExtra("modeloFolio",modeloFolio);
+                        intentWs.putExtra("fechaVigenciaFolio",fechaVigenciaFolio);
+                        intentWs.putExtra("fechaAltaFolio",fechaAltaFolio);
+                        intentWs.putExtra("fechaVigenciaFoliio",fechaVigenciaFoliio);
+                        intentWs.putExtra("nombreSocioFolio",nombreSocioFolio);
+                        intentWs.putExtra("estatusFolio",estatusFolio);
+
+                        intentWs.putExtra("lnumeroTarjeton",lnumeroTarjeton);
+                        intentWs.putExtra("licenciaTarjeton",licenciaTarjeton);
+                        intentWs.putExtra("tipoChoferTarjeton",tipoChoferTarjeton);
+                        intentWs.putExtra("folioTarjeton",folioTarjeton);
+                        intentWs.putExtra("maternoTarjeton",maternoTarjeton);
+                        intentWs.putExtra("paternoTarjerton",paternoTarjerton);
+                        intentWs.putExtra("nombreTarjeton",nombreTarjeton);
+                        intentWs.putExtra("fechaAltaTarjeton",fechaAltaTarjeton);
+                        intentWs.putExtra("fechaVigenciaTarjeton",fechaVigenciaTarjeton);
+                        intentWs.putExtra("fechaLabTarjerton",fechaLabTarjerton);
+                        intentWs.putExtra("estatusTarjerton",estatusTarjerton);
+
+
+                        intentWs.putExtra("folioGafeteQR",folioGafeteQR);
+                        intentWs.putExtra("delegacionGafeteQR",delegacionGafeteQR);
+                        intentWs.putExtra("modalidadGafeteQR",modalidadGafeteQR);
+                        intentWs.putExtra("serieRegistroGafeteQR",serieRegistroGafeteQR);
+                        intentWs.putExtra("vigenciaGafeteQR",vigenciaGafeteQR);
+
+
+                        startActivity(intentWs);
+                        e.printStackTrace();
+                        getActivity().finish();
+
+                    }
+
+                    //Lanzamos Intent Navigation Drawer.
+                    /*Intent intent = new Intent(getApplicationContext(), Drawer.class);
+                    startActivity(intent);*/
+                } else {
+                    Toast.makeText(getContext(), "No se encontraron parametros en la consulta", Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), error.toString(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parametros = new HashMap<String, String>();
+                parametros.put("placa", editTextPlaca.getText().toString());
+
+
+
+                return parametros;
+            }
+        };
+        RequestQueue requesrQueue = Volley.newRequestQueue(getContext());
+        requesrQueue.add(stringRequest);
+    }
+
+
+
+
+  /*  private void enviarWSConsulta(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             //Para mandar un post aun WS el response Listener tiene que ser de tipo  String , y despues convertir la respuesta a JsonObject.
@@ -1073,8 +1592,8 @@ public class HomeFragment extends Fragment  {
                     }
 
                     //Lanzamos Intent Navigation Drawer.
-                    /*Intent intent = new Intent(getApplicationContext(), Drawer.class);
-                    startActivity(intent);*/
+                    *//*Intent intent = new Intent(getApplicationContext(), Drawer.class);
+                    startActivity(intent);*//*
                 } else {
                     Toast.makeText(getContext(), "No se encontraron parametros en la consulta", Toast.LENGTH_LONG).show();
                 }
@@ -1098,7 +1617,7 @@ public class HomeFragment extends Fragment  {
         RequestQueue requesrQueue = Volley.newRequestQueue(getContext());
         requesrQueue.add(stringRequest);
     }
-
+*/
 
 
 

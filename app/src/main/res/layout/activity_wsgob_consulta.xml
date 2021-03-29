@@ -9,6 +9,7 @@
     android:fillViewport="true"
     tools:context="app.simov.teseo.WsgobConsulta">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -232,39 +233,39 @@
 
 
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/tvLabelVim"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="0dp"
-                android:text="@string/VIM"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/tvVim"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLabelVigerciaTc" />
-
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
+                android:layout_height="match_parent">
                 <TextView
-                    android:id="@+id/tvVim"
+                    android:id="@+id/tvLabelVim"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/NO_PLACAS"
-                    android:textColor="@color/titulosVerdes"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="0dp"
+                    android:text="@string/VIM"
+                    android:textColor="@color/white"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/tvPlaca"
-                    app:layout_constraintStart_toStartOf="@+id/tvPlaca"
-                    app:layout_constraintTop_toTopOf="@+id/tvLabelVim" />
+                    app:layout_constraintEnd_toStartOf="@+id/tvVim"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLabelVigerciaTc" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/tvVim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/NO_PLACAS"
+                        android:textColor="@color/titulosVerdes"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/tvPlaca"
+                        app:layout_constraintStart_toStartOf="@+id/tvPlaca"
+                        app:layout_constraintTop_toTopOf="@+id/tvLabelVim" />
+                </TableRow>
             </TableRow>
-        </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
@@ -295,6 +296,99 @@
 
                 </TableRow>
             </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/tvLabelColorw"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:text="COLOR"
+                    android:textColor="@color/white"/>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/tvColor"
+                        android:layout_height="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="COLOR"
+                        android:textStyle="bold"
+                        android:textColor="@color/titulosVerdes" />
+
+                </TableRow>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/tvLabelAgrupacion"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:text="AGRUPACION"
+                    android:textColor="@color/white"/>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/tvAgrupacion"
+                        android:layout_height="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="AGRUPACION"
+                        android:textStyle="bold"
+                        android:textColor="@color/titulosVerdes" />
+
+                </TableRow>
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/tvLabelRutaSitio"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:text="RUTA SITIO"
+                    android:textColor="@color/white"/>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/tvRutaSitio"
+                        android:layout_height="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="RUTA SITIO"
+                        android:textStyle="bold"
+                        android:textColor="@color/titulosVerdes" />
+
+                </TableRow>
+            </TableRow>
+
+
         </TableLayout>
 
         <!--Termina tabla de datos PLACAS-->
@@ -3121,5 +3215,7 @@
 
         </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </ScrollView>
