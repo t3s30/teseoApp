@@ -2036,7 +2036,7 @@ tarjeton_TIJUANA
                         Log.d("licencia2", "###Valor de la licencia" + licencia);
                         intentWs.putExtra("bandera", enviaBanderaLic);
                         startActivity(intentWs);
-                        e.printStackTrace();
+                       // e.printStackTrace();
 
                     }
 
@@ -2050,7 +2050,7 @@ tarjeton_TIJUANA
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), error.toString(), Toast.LENGTH_LONG).show();
+               // Toast.makeText(getContext(), error.toString(), Toast.LENGTH_LONG).show();
             }
         }) {
             @Override
