@@ -14,7 +14,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginBottom="40dp"
         android:alpha=".20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,20 +27,18 @@
         android:id="@+id/tvApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:text="@string/app_name"
-
         android:textAlignment="center"
         android:textColor="#FAF8F8"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imageId" />
 
     <TextView
         android:id="@+id/tvUsuario"
         android:layout_width="wrap_content"
-        android:layout_height="38dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
         android:text="Abdiel Carrasco"
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
@@ -65,13 +62,15 @@
 <!--Botón QR-->
     <Button
         android:id="@+id/btnQr"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/qrteseo"
-        android:backgroundTint="@color/botonLogin"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginRight="80dp"
+        android:background="@drawable/bg_round"
+        android:drawableLeft="@drawable/qrtit"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/edtPlaca"
+        app:layout_constraintEnd_toEndOf="@+id/tvMunicipio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMunicipio" />
 
@@ -79,15 +78,15 @@
 
     <Button
         android:id="@+id/btnFotoPlaca"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/fotoplaca"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/bg_round"
         android:backgroundTint="@color/botonLogin"
-        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/fotoplacac"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/imageId"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnQr" />
+        app:layout_constraintStart_toEndOf="@+id/btnQr"
+        app:layout_constraintTop_toTopOf="@+id/btnQr" />
 
 
 
@@ -114,23 +113,25 @@
         android:text="@string/CON_LICENCIA"
         android:textColor="@color/titulosVerdes" />
 
+    <!--Botón QR-->
+
+
     <EditText
         android:id="@+id/edtLicencia"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@color/white"
         android:hint="@string/NUMERO_LICENCIA"
         android:inputType="textCapCharacters"
         android:textAlignment="center"
-        android:layout_marginTop="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLimpiarLicencia" />
-    <!--Botón QR-->
-
+        app:layout_constraintTop_toBottomOf="@+id/btnFotoPlaca" />
 
     <CheckBox
         android:id="@+id/cBoxPlaca"
@@ -147,34 +148,17 @@
 
     <Button
         android:id="@+id/btnLimpiarLicencia"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/cleanerimos"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:background="@drawable/bg_round"
         android:backgroundTint="@color/botonLogin"
+        android:drawableLeft="@drawable/broom"
         android:textColor="@color/white"
-        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFotoPlaca" />
+        app:layout_constraintStart_toEndOf="@+id/btnFotoPlaca"
+        app:layout_constraintTop_toTopOf="@+id/btnFotoPlaca" />
 
-    <EditText
-        android:id="@+id/edtPlaca"
-        android:layout_width="wrap_content"
-        android:layout_height="47dp"
-        android:backgroundTint="#FBFAFA"
-        android:ems="10"
-        android:hint="@string/PLACA"
-        android:inputType="textCapCharacters"
-        android:textAlignment="center"
-        android:layout_marginTop="20dp"
-        android:textColor="#FBF8F8"
-        android:textColorHint="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtLicencia" />
-
-<!--Termian Inputs y checks-->
+    <!--Termian Inputs y checks-->
 
 <!--Zector y Modalidad-->
 
@@ -255,35 +239,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spZona"
         app:layout_constraintVertical_bias="0.384" />
-
 -->
 
+    <EditText
+        android:id="@+id/edtPlaca"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#FBFAFA"
+        android:ems="10"
+        android:hint="@string/PLACA"
+        android:inputType="textCapCharacters"
+        android:textAlignment="center"
+        android:textColor="#FBF8F8"
+        android:textColorHint="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnConsulta2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMunicipio" />
 
     <Button
         android:id="@+id/btnConsulta2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="70dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:backgroundTint="@color/botonLogin"
         android:text="CONSULTA"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/tvVersion"
+        app:layout_constraintBottom_toTopOf="@+id/tvVersion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPlaca" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvVersion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
         android:text="@string/version"
-        android:layout_marginBottom="10dp"
+        android:textColor="@color/titulosVerdes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/titulosVerdes"/>
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
