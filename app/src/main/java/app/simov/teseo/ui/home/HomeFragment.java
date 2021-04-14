@@ -53,6 +53,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.simov.teseo.Infracciones;
+import app.simov.teseo.MainActivity;
 import app.simov.teseo.R;
 import app.simov.teseo.WsgobConsulta;
 
@@ -283,8 +284,8 @@ public class HomeFragment extends Fragment  {
         //find imageview
         imageViewP = root.findViewById(R.id.imageId);
         //find textview
-        textViewP = root.findViewById(R.id.textId);
-        textViewP.setVisibility(View.GONE);
+//        textViewP = root.findViewById(R.id.textId);
+//        textViewP.setVisibility(View.GONE);
         //check app level permission is granted for Camera
 
         requestPermissions(new String[]{Manifest.permission.CAMERA}, 101);
@@ -321,6 +322,8 @@ public class HomeFragment extends Fragment  {
         final Button bntQuitar = root.findViewById(R.id.btnQuitar);*/
 
         final Button bntQr = root.findViewById(R.id.btnQr);
+
+        final Button salir = root.findViewById(R.id.salir);
 
         final Button bntFoto = root.findViewById(R.id.btnFotoPlaca);
 
@@ -375,7 +378,7 @@ public class HomeFragment extends Fragment  {
         bntQuitar.setVisibility(View.GONE);
 */
 
-        NavigationView navigationView = (NavigationView) root.findViewById(R.id.nav_view);
+        //NavigationView navigationView = (NavigationView) root.findViewById(R.id.nav_view);
 
 
 
@@ -387,6 +390,15 @@ public class HomeFragment extends Fragment  {
         escanear();
      }
  });
+
+        //Boton Iniciar QR
+        salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salir();
+            }
+        });
+
 
         //Boton Foto placa
         bntFoto.setOnClickListener(new View.OnClickListener() {
@@ -2082,6 +2094,15 @@ public void escanear(){
 
 }
 
+    public void salir(){
+        Intent intentMain = new Intent(getActivity(), MainActivity.class);
+
+        intentMain.putExtra("userOut","");
+        intentMain.putExtra("passOut","");
+
+        startActivity(intentMain);
+
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

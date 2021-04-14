@@ -143,7 +143,7 @@ public class SlideshowFragment extends Fragment {
         final Button bntQr = root.findViewById(R.id.btnQr);
 
 
-        NavigationView navigationView = (NavigationView) root.findViewById(R.id.nav_view);
+//        NavigationView navigationView = (NavigationView) root.findViewById(R.id.nav_view);
 
 //TextViewa.
 
