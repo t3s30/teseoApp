@@ -597,9 +597,7 @@ public class HomeFragment extends Fragment  {
                 progressDialog.getWindow().setBackgroundDrawableResource(
                         android.R.color.transparent
                 );*/
-
-
-
+                
                     banderaLicencia = false;
                     //Aqui declaramos solo lo que queremos que se cargue despues del click del boton para iniciar la nueva actividad
                     editTextPlaca = root.findViewById(R.id.edtPlaca);
@@ -746,12 +744,6 @@ public class HomeFragment extends Fragment  {
 
 
 
-
-
-
-
-
-
                             intentWs.putExtra("placaFolio",placaFolio);
                             intentWs.putExtra("foliofolio",foliofolio);
                             intentWs.putExtra("delegacionFolio",delegacionFolio);
@@ -813,7 +805,7 @@ public class HomeFragment extends Fragment  {
                                 String  ESTATUS = jsonarray.getString(24);
 
 
-                                if (ESTATUS.equals("ACTIVO") || ESTATUS.equals("BAJA TEMPORAL") ){
+                                if (ESTATUS.equals("ACTIVO") || ESTATUS.equals("BAJA TEMPORAL") || ESTATUS.equals(("BAJA DEFINITIVA"))){
                                     intentWs.putExtra("economico", "NO APLICA");
                                     intentWs.putExtra("estatus", ESTATUS);
                                     String VIGENCIA = jsonarray.getString(23);
