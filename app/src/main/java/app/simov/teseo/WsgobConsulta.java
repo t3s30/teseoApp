@@ -376,9 +376,25 @@ public class WsgobConsulta extends AppCompatActivity {
             Log.d("datoswsInserta2","###################"+color);
 
 
-            tvColor.setText(color);
-            tvAgrupacion.setText(agrupacion);
-            tvRutaSitio.setText(rutaSitio);
+            if (color !=null){
+                tvColor.setText(color);
+            }else{
+                tvColor.setText("NO APLICA");
+            }
+
+
+
+            if (agrupacion !=null){
+                tvAgrupacion.setText(agrupacion);
+            }else{
+                tvAgrupacion.setText("NO APLICA");
+            }
+
+            if (rutaSitio !=null){
+                tvRutaSitio.setText(rutaSitio);
+            }else{
+                tvRutaSitio.setText("NO APLICA");
+            }
 
 
             economico = bundle.getString("economico");

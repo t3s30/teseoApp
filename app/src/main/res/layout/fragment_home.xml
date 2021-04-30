@@ -75,9 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
-<!--Botón QR-->
+    <!--Botón QR-->
     <Button
         android:id="@+id/btnQr"
         android:layout_width="90dp"

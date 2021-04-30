@@ -4,7 +4,7 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
+        <!--<item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_transito"
             android:title="@string/menu_home" />
@@ -19,7 +19,7 @@
         <item
             android:id="@+id/nav_radar"
             android:icon="@drawable/ic_radar"
-            android:title="@string/menu_radar" />
+            android:title="@string/menu_radar" />-->
         <item
             android:id="@+id/nav_salir"
             android:icon="@drawable/ic_out"

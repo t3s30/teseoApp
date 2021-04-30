@@ -311,15 +311,6 @@ public class HomeFragment extends Fragment  {
         editTextLicencia = root.findViewById(R.id.edtLicencia);
 
         final Button buttonConsulta = root.findViewById(R.id.btnConsulta2);
-        //final Spinner spinnerZona = root.findViewById(R.id.spZona);
-
-        //final Spinner spinnerInfraccion = root.findViewById(R.id.spInfraccion3);
-
-        /*final Button buttonInfraccion = root.findViewById(R.id.btnInfraccion);
-        final Button buttonConsulta = root.findViewById(R.id.btnConsulta);
-        final Button bntCuenta = root.findViewById(R.id.btnCuenta);
-
-        final Button bntQuitar = root.findViewById(R.id.btnQuitar);*/
 
         final Button bntQr = root.findViewById(R.id.btnQr);
 
@@ -329,58 +320,6 @@ public class HomeFragment extends Fragment  {
 
         final Button btnLimpiar = root.findViewById(R.id.btnLimpiarLicencia);
         String[] InfracionesList = getResources().getStringArray(R.array.infracciones_arrays);
-
-       /* edtInfraccion1 = root.findViewById(R.id.edtInfraccion1);
-        ArrayAdapter<String> adapterInfracciones = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,InfracionesList);
-        edtInfraccion1.setAdapter(adapterInfracciones);
-
-        edtInfraccion2 = root.findViewById(R.id.edtInfraccion2);
-        ArrayAdapter<String> adapterInfracciones2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,InfracionesList);
-        edtInfraccion2.setAdapter(adapterInfracciones2);
-
-        edtInfraccion3 = root.findViewById(R.id.edtInfraccion3);
-        ArrayAdapter<String> adapterInfracciones3 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,InfracionesList);
-        edtInfraccion3.setAdapter(adapterInfracciones3);
-
-        edtInfraccion4 = root.findViewById(R.id.edtInfraccion4);
-        ArrayAdapter<String> adapterInfraccione4 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,InfracionesList);
-        edtInfraccion4.setAdapter(adapterInfraccione4);
-
-        edtInfraccion5 = root.findViewById(R.id.edtInfraccion5);
-        ArrayAdapter<String> adapterInfraccione5 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,InfracionesList);
-        edtInfraccion5.setAdapter(adapterInfraccione5);
-
-
-        //Defenimos vista del spinner "CAJA"
-        spinnerModalidad = root.findViewById(R.id.spModalidad);*/
-        //Lista principal despliega primero
-       // ArrayAdapter adapterModalidad = ArrayAdapter.createFromResource(getActivity(),R.array.modalidad_arrays,R.layout.spinner_item);
-        //Mostramos el contenido del source en un dropDown y lo seteamos.
-        /*adapterModalidad.setDropDownViewResource(R.layout.spinner_dropdown_layout);
-        spinnerModalidad.setAdapter(adapterModalidad);*/
-
-
-       /* spinerSector = root.findViewById(R.id.spZona);*/
-        //Lista principal despliega primero
-        //ArrayAdapter adapterZona = ArrayAdapter.createFromResource(getActivity(),R.array.zonas_arrays,R.layout.spinner_item);
-        //Mostramos el contenido del source en un dropDown y lo seteamos.
-      /*  adapterZona.setDropDownViewResource(R.layout.spinner_dropdown_layout);
-        spinerSector.setAdapter(adapterZona);*/
-
-/*
-
-
-        edtInfraccion1.setVisibility(View.GONE);
-        edtInfraccion2.setVisibility(View.GONE);
-        edtInfraccion3.setVisibility(View.GONE);
-        edtInfraccion4.setVisibility(View.GONE);
-        edtInfraccion5.setVisibility(View.GONE);
-        bntQuitar.setVisibility(View.GONE);
-*/
-
-        //NavigationView navigationView = (NavigationView) root.findViewById(R.id.nav_view);
-
-
 
 
  //Boton Iniciar QR
@@ -418,63 +357,6 @@ public class HomeFragment extends Fragment  {
         });
 
 
-
-/*
-        //Boton agregar Infracciones
- bntCuenta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cuenta++;
-
-                Log.d("CUENTS+++","CONTADOR"+cuenta);
-                if (cuenta == 1){
-                    edtInfraccion1.setVisibility(View.VISIBLE);
-                    bntQuitar.setVisibility(View.VISIBLE);
-                }
-                if (cuenta == 2){
-                    edtInfraccion2.setVisibility(View.VISIBLE);
-
-                }
-                if(cuenta == 3){
-                    edtInfraccion3.setVisibility(View.VISIBLE);
-                }
-                if(cuenta == 4){
-                    edtInfraccion4.setVisibility(View.VISIBLE);
-                }
-                if(cuenta == 5){
-                    edtInfraccion5.setVisibility(View.VISIBLE);
-
-                }
-            }
-        });
-
-//Boton Quitar Infracciones
-         bntQuitar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                cuenta--;
-                Log.d("CUENTS---","CONTADOR"+cuenta);
-                if (cuenta == 4){
-                    edtInfraccion5.setVisibility(View.GONE);
-                }
-                if (cuenta == 3){
-                    edtInfraccion4.setVisibility(View.GONE);
-                }
-                if(cuenta == 2){
-                    edtInfraccion3.setVisibility(View.GONE);
-                }
-                if(cuenta == 1){
-                    edtInfraccion2.setVisibility(View.GONE);
-                }
-                if(cuenta == 0){
-                    edtInfraccion1.setVisibility(View.GONE);
-                    bntQuitar.setVisibility(View.GONE);
-
-
-                }
-            }
-        });*/
         //Mayusculas a LICENCIA Y PLACA.
          editTextLicencia.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
          editTextPlaca.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
@@ -510,94 +392,14 @@ public class HomeFragment extends Fragment  {
         }
 
 
-      /*//Validacion de Checkbox
-        checkBoxLicencia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkBoxLicencia.isChecked() == true) {
-                    banderaLicencia = true;
-                    Log.d("CHBOX", "ESTAS CLIKEANDO DE CHECK DE LICENCIA## el valor de la bandera es: " + banderaLicencia);
-
-                } else {
-                    banderaLicencia = false;
-                    Log.d("CHBOX", "ESTAS CLIKEANDO DE CHECK DE LICENCIA## el valor de la bandera es: " + banderaLicencia);
-                }
-
-            }
-        });
-
-
-        checkBoxPlaca.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkBoxPlaca.isChecked() == true) {
-                    banderaPlaca = true;
-                    Log.d("CHBOX", "ESTAS CLIKEANDO CHECK DE PLACA## el valor de la bandera es:  " + banderaPlaca);
-                } else {
-                    banderaPlaca = false;
-                    Log.d("CHBOX", "ESTAS CLIKEANDO CHECK DE PLACA## el valor de la bandera es:  " + banderaPlaca);
-                }
-
-            }
-        });
-*/
-
-//Boton que termina el proceso para enviar la informacion de Infraccion.
-       /* buttonInfraccion.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                //Inicializamos el progress BAR
-                progressDialog = new ProgressDialog(getContext());
-                //Mostramos el progressBAR
-                progressDialog.show();
-                progressDialog.setContentView(R.layout.progress_dialog);
-                //Fondo transparente
-                progressDialog.getWindow().setBackgroundDrawableResource(
-                        android.R.color.transparent
-                );
-*/
-
-
-     /*               banderaLicencia = false;
-                    //Aqui declaramos solo lo que queremos que se cargue despues del click del boton para iniciar la nueva actividad
-                    editTextPlaca = root.findViewById(R.id.edtPlaca);
-                    placa = editTextPlaca.getText().toString(); //gets you the contents of edit text
-
-                    Log.d("Variable", "LICENCIA## " + placa);
-                    String URL = "https://simov.app/servicios/controlVehicular.php";
-
-                    //Envia Ws
-                    enviarWSConsultaInfraccion(URL);
-
-
-
-
-               *//*
-                    progressDialog.hide();
-                    Toast.makeText(getContext(), "Tienes que seleccionar PLACA o LICENCIA", Toast.LENGTH_LONG).show();
-                }*//*
-
-
-
-            }
-        });*/
 
         //Boton para consulta WS de placa y licencia
         buttonConsulta.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                /*//Inicializamos el progress BAR
-                progressDialog = new ProgressDialog(getContext());
-                //Mostramos el progressBAR
-                progressDialog.show();
-                progressDialog.setContentView(R.layout.progress_dialog);
-                //Fondo transparente
-                progressDialog.getWindow().setBackgroundDrawableResource(
-                        android.R.color.transparent
-                );*/
-                
+
+
                     banderaLicencia = false;
                     //Aqui declaramos solo lo que queremos que se cargue despues del click del boton para iniciar la nueva actividad
                     editTextPlaca = root.findViewById(R.id.edtPlaca);
